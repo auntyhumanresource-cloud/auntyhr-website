@@ -370,22 +370,21 @@ footer{background:var(--ink);color:#bdb5a8;padding:64px 0 30px}
       <a href="https://www.youtube.com/@AuntyHR" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.77-1.77C19.32 5.13 12 5.13 12 5.13s-7.32 0-8.83.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.77 1.77c1.51.4 8.83.4 8.83.4s7.32 0 8.83-.4a2.5 2.5 0 001.77-1.77C23 15.2 23 12 23 12zm-13 3.2V8.8l5.5 3.2-5.5 3.2z"/></svg></a>
     </div>
   </div>
-  <div class="form-card"><h3>Send a message</h3><p class="sub">Fill this in and it&rsquo;ll open in your email app, ready to send.</p>
-    <div class="field"><label for="nm">Your name</label><input id="nm" type="text" placeholder="Jane Doe"></div>
-    <div class="field"><label for="em">Email</label><input id="em" type="email" placeholder="jane@email.com"></div>
-    <div class="field"><label for="tp">I&rsquo;m reaching out as a&hellip;</label><select id="tp"><option>Business</option><option>Professional / job seeker</option><option>Other</option></select></div>
-    <div class="field"><label for="ms">Message</label><textarea id="ms" placeholder="Tell us a little about what you need&hellip;"></textarea></div>
-    <button class="btn btn-orange" onclick="sendMail()">Send message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+  <div class="form-card"><h3>Send a message</h3><p class="sub">Fill this in and we&rsquo;ll get back to you by email.</p>
+    <!-- Contact form connected to Formspree (form ID: meebywek).
+         Submissions are emailed to the address set in the Formspree dashboard.
+         Remember to click Formspree's one-time confirmation email after the first test submission. -->
+    <form action="https://formspree.io/f/meebywek" method="POST">
+      <input type="hidden" name="_subject" value="New enquiry from AuntyHR website">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="field"><label for="nm">Your name</label><input id="nm" name="name" type="text" placeholder="Jane Doe" required></div>
+      <div class="field"><label for="em">Email</label><input id="em" name="email" type="email" placeholder="jane@email.com" required></div>
+      <div class="field"><label for="tp">I&rsquo;m reaching out as a&hellip;</label><select id="tp" name="Enquiry type"><option>Business</option><option>Professional / job seeker</option><option>Other</option></select></div>
+      <div class="field"><label for="ms">Message</label><textarea id="ms" name="message" placeholder="Tell us a little about what you need&hellip;" required></textarea></div>
+      <button class="btn btn-orange" type="submit">Send message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+    </form>
   </div>
 </div></section>
-<script>
-function sendMail(){
-  var n=document.getElementById('nm').value, e=document.getElementById('em').value, t=document.getElementById('tp').value, m=document.getElementById('ms').value;
-  var subj=encodeURIComponent('Website enquiry — '+(n||'New message'));
-  var body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\nI am a: '+t+'\n\n'+m);
-  window.location.href='mailto:auntyhumanresource@gmail.com?subject='+subj+'&body='+body;
-}
-</script>
 <footer>
   <div class="wrap">
     <div class="foot-grid">
