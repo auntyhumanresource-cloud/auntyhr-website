@@ -341,6 +341,28 @@ footer{background:var(--ink);color:#bdb5a8;padding:64px 0 30px}
   .trow2,.trow3{grid-template-columns:1fr}
   .prog-grid{grid-template-columns:1fr}
 }
+
+/* ===== scroll reveal (works on touch) ===== */
+@media (prefers-reduced-motion: no-preference){
+  body.reveal-on .reveal{opacity:0}
+  body.reveal-on .reveal.in{animation:revealUp .6s cubic-bezier(.22,.61,.36,1) forwards}
+}
+@keyframes revealUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+/* ===== mobile UX polish ===== */
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  section.block{padding:40px 0}
+  .sec-head{margin-bottom:26px}
+  .hero{padding:44px 0 52px}
+  .visual{display:none}
+  .svc-grid,.prog-grid,.ev-grid,.trow2{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;gap:14px;margin:0 -20px;padding:2px 20px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .svc-grid::-webkit-scrollbar,.prog-grid::-webkit-scrollbar,.ev-grid::-webkit-scrollbar,.trow2::-webkit-scrollbar{display:none}
+  .svc-grid>*,.prog-grid>*,.trow2>*{flex:0 0 84%;scroll-snap-align:start}
+  .ev-grid>*{flex:0 0 88%;scroll-snap-align:start}
+  .logos-grid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .swipe-cue{display:flex;align-items:center;gap:7px;justify-content:center;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--orange-deep);margin-bottom:14px}
+}
+@media(min-width:641px){.swipe-cue{display:none}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"AuntyHR","url":"https://auntyhr.org","logo":"https://auntyhr.org/og-image.jpg","image":"https://auntyhr.org/og-image.jpg","description":"HR consulting, corporate training and career coaching for businesses and professionals.","email":"auntyhumanresource@gmail.com","telephone":"+2348106704518","founder":{"@type":"Person","name":"Mfonobong Eshett"},"sameAs":["https://www.linkedin.com/company/aunty-hr/","https://www.instagram.com/auntyhr/","https://x.com/AuntyHR","https://web.facebook.com/profile.php?id=61574825523395","https://www.youtube.com/@AuntyHR"]}</script></head>
 <body>
@@ -390,7 +412,7 @@ footer{background:var(--ink);color:#bdb5a8;padding:64px 0 30px}
           <div class="svc-panel"><span class="bignum">07</span><svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 9h18"/><path d="M7 13h4M7 16h7"/></svg></div>
           <div class="svc-detail"><div class="forwho"><svg width="13" height="13" viewBox="0 0 24 24" fill="var(--orange-deep)"><circle cx="12" cy="12" r="10"/></svg>For Businesses</div><h3>HRIS Platform</h3><p>Our human-resource management platform for small businesses and professionals — payroll, people data and HR admin in one simple place.</p><ul class="svc-feat"><li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#141210" stroke-width="3.4"><path d="M5 12l5 5L20 6"/></svg></span>Employee records &amp; self-service</li><li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#141210" stroke-width="3.4"><path d="M5 12l5 5L20 6"/></svg></span>Payroll management</li><li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#141210" stroke-width="3.4"><path d="M5 12l5 5L20 6"/></svg></span>Leave &amp; attendance tracking</li><li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#141210" stroke-width="3.4"><path d="M5 12l5 5L20 6"/></svg></span>Onboarding workflows</li></ul><a class="btn btn-primary" href="contact.html">Enquire about this</a></div>
         </div></div></section>
-<section class="block"><div class="wrap"><div class="sec-head center"><span class="eyebrow">Signature programs</span><h2>High-demand training programs</h2><p>Flagship corporate training for businesses and organizations &mdash; delivered as focused workshops or full programs, and tailored to your team&rsquo;s goals.</p></div><div class="prog-grid"><div class="prog"><span class="pn">01</span><div class="pt"><h4>Leading High-Performing Teams</h4><p>Equip managers to build, motivate and lead teams that consistently deliver.</p></div></div><div class="prog"><span class="pn">02</span><div class="pt"><h4>Managing Performance for Business Results</h4><p>Turn goals into outcomes with clear expectations, tracking and accountability.</p></div></div><div class="prog"><span class="pn">03</span><div class="pt"><h4>Growth Mindset: Building a Culture of Continuous Improvement</h4><p>Foster a culture that embraces learning, feedback and steady progress.</p></div></div><div class="prog"><span class="pn">04</span><div class="pt"><h4>Effective Workplace Communication</h4><p>Sharpen how your team listens, speaks and aligns across every level.</p></div></div><div class="prog"><span class="pn">05</span><div class="pt"><h4>Business Writing and Professional Documentation</h4><p>Write clear, polished emails, reports and documents that get acted on.</p></div></div><div class="prog"><span class="pn">06</span><div class="pt"><h4>Conflict Resolution and Workplace Relationships</h4><p>Resolve tension constructively and build stronger working relationships.</p></div></div><div class="prog"><span class="pn">07</span><div class="pt"><h4>Emotional Intelligence for Leaders</h4><p>Lead with self-awareness, empathy and composure under pressure.</p></div></div><div class="prog"><span class="pn">08</span><div class="pt"><h4>Giving Effective Feedback and Conducting Performance Reviews</h4><p>Deliver feedback and reviews that drive growth, not defensiveness.</p></div></div><div class="prog"><span class="pn">09</span><div class="pt"><h4>Accountability and Ownership at Work</h4><p>Build a team that takes initiative and owns outcomes end to end.</p></div></div><div class="prog"><span class="pn">10</span><div class="pt"><h4>Building a Collaborative and Productive Workplace Culture</h4><p>Create an environment where people work well together and do their best work.</p></div></div></div><div style="text-align:center;margin-top:36px"><a class="btn btn-primary" href="contact.html">Request a custom training</a></div></div></section>
+<section class="block"><div class="wrap"><div class="sec-head center"><span class="eyebrow">Signature programs</span><h2>High-demand training programs</h2><p>Flagship corporate training for businesses and organizations &mdash; delivered as focused workshops or full programs, and tailored to your team&rsquo;s goals.</p></div><div class="swipe-cue"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Swipe to explore</div><div class="prog-grid"><div class="prog"><span class="pn">01</span><div class="pt"><h4>Leading High-Performing Teams</h4><p>Equip managers to build, motivate and lead teams that consistently deliver.</p></div></div><div class="prog"><span class="pn">02</span><div class="pt"><h4>Managing Performance for Business Results</h4><p>Turn goals into outcomes with clear expectations, tracking and accountability.</p></div></div><div class="prog"><span class="pn">03</span><div class="pt"><h4>Growth Mindset: Building a Culture of Continuous Improvement</h4><p>Foster a culture that embraces learning, feedback and steady progress.</p></div></div><div class="prog"><span class="pn">04</span><div class="pt"><h4>Effective Workplace Communication</h4><p>Sharpen how your team listens, speaks and aligns across every level.</p></div></div><div class="prog"><span class="pn">05</span><div class="pt"><h4>Business Writing and Professional Documentation</h4><p>Write clear, polished emails, reports and documents that get acted on.</p></div></div><div class="prog"><span class="pn">06</span><div class="pt"><h4>Conflict Resolution and Workplace Relationships</h4><p>Resolve tension constructively and build stronger working relationships.</p></div></div><div class="prog"><span class="pn">07</span><div class="pt"><h4>Emotional Intelligence for Leaders</h4><p>Lead with self-awareness, empathy and composure under pressure.</p></div></div><div class="prog"><span class="pn">08</span><div class="pt"><h4>Giving Effective Feedback and Conducting Performance Reviews</h4><p>Deliver feedback and reviews that drive growth, not defensiveness.</p></div></div><div class="prog"><span class="pn">09</span><div class="pt"><h4>Accountability and Ownership at Work</h4><p>Build a team that takes initiative and owns outcomes end to end.</p></div></div><div class="prog"><span class="pn">10</span><div class="pt"><h4>Building a Collaborative and Productive Workplace Culture</h4><p>Create an environment where people work well together and do their best work.</p></div></div></div><div style="text-align:center;margin-top:36px"><a class="btn btn-primary" href="contact.html">Request a custom training</a></div></div></section>
 <section class="final"><div class="wrap"><h2>Not sure which fits?</h2><p>Tell us where you are — a business building a team or a professional building a career — and we&rsquo;ll point you to the right starting point.</p><a class="btn btn-primary" href="contact.html">Book a consultation</a></div></section>
 <footer>
   <div class="wrap">
@@ -435,5 +457,33 @@ footer{background:var(--ink);color:#bdb5a8;padding:64px 0 30px}
 </footer>
 <script>
 window.addEventListener('scroll',function(){document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>12);});
+</script>
+
+<script>
+(function(){
+  try{
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
+    document.body.classList.add('reveal-on');
+    var sel='.sec-head,.stat,.logo-tile,.path,.svc,.prog,.tcard,.ev-card,.founder-vis,.about-grid>div,.hris,.value,.aw-card,.story-grid>*,.bio-grid>*,.svc-row>*';
+    var els=[].slice.call(document.querySelectorAll(sel));
+    els.forEach(function(el){ el.classList.add('reveal'); });
+    els.forEach(function(el){
+      var sibs=[].slice.call(el.parentNode.children).filter(function(c){return c.classList.contains('reveal');});
+      var i=sibs.indexOf(el);
+      if(i>0) el.style.animationDelay=Math.min(i*0.06,0.3)+'s';
+    });
+    if(!('IntersectionObserver' in window)){ els.forEach(function(el){el.classList.remove('reveal');}); return; }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var t=e.target; t.classList.add('in'); io.unobserve(t);
+          t.addEventListener('animationend',function(){ t.classList.remove('reveal','in'); t.style.animationDelay=''; },{once:true});
+        }
+      });
+    },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  }catch(e){try{document.body.classList.remove('reveal-on');}catch(_){}}
+})();
 </script>
 </body></html>

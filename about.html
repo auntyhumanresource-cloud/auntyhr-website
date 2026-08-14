@@ -332,6 +332,28 @@ footer{background:var(--ink);color:#bdb5a8;padding:64px 0 30px}
   .ev-grid{grid-template-columns:1fr}
   .trow2,.trow3{grid-template-columns:1fr}
 }
+
+/* ===== scroll reveal (works on touch) ===== */
+@media (prefers-reduced-motion: no-preference){
+  body.reveal-on .reveal{opacity:0}
+  body.reveal-on .reveal.in{animation:revealUp .6s cubic-bezier(.22,.61,.36,1) forwards}
+}
+@keyframes revealUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+/* ===== mobile UX polish ===== */
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  section.block{padding:40px 0}
+  .sec-head{margin-bottom:26px}
+  .hero{padding:44px 0 52px}
+  .visual{display:none}
+  .svc-grid,.prog-grid,.ev-grid,.trow2{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;gap:14px;margin:0 -20px;padding:2px 20px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .svc-grid::-webkit-scrollbar,.prog-grid::-webkit-scrollbar,.ev-grid::-webkit-scrollbar,.trow2::-webkit-scrollbar{display:none}
+  .svc-grid>*,.prog-grid>*,.trow2>*{flex:0 0 84%;scroll-snap-align:start}
+  .ev-grid>*{flex:0 0 88%;scroll-snap-align:start}
+  .logos-grid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .swipe-cue{display:flex;align-items:center;gap:7px;justify-content:center;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--orange-deep);margin-bottom:14px}
+}
+@media(min-width:641px){.swipe-cue{display:none}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"AuntyHR","url":"https://auntyhr.org","logo":"https://auntyhr.org/og-image.jpg","image":"https://auntyhr.org/og-image.jpg","description":"HR consulting, corporate training and career coaching for businesses and professionals.","email":"auntyhumanresource@gmail.com","telephone":"+2348106704518","founder":{"@type":"Person","name":"Mfonobong Eshett"},"sameAs":["https://www.linkedin.com/company/aunty-hr/","https://www.instagram.com/auntyhr/","https://x.com/AuntyHR","https://web.facebook.com/profile.php?id=61574825523395","https://www.youtube.com/@AuntyHR"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mfonobong Eshett","jobTitle":"HR Professional, Coach & Founder","worksFor":{"@type":"Organization","name":"AuntyHR"},"url":"https://auntyhr.org/about.html","image":"https://auntyhr.org/og-image.jpg","description":"Certified HR Professional (PHRi), career coach, learning & development specialist and founder of AuntyHR.","sameAs":["https://www.linkedin.com/company/aunty-hr/"]}</script></head>
 <body>
@@ -437,5 +459,33 @@ footer{background:var(--ink);color:#bdb5a8;padding:64px 0 30px}
 </footer>
 <script>
 window.addEventListener('scroll',function(){document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>12);});
+</script>
+
+<script>
+(function(){
+  try{
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
+    document.body.classList.add('reveal-on');
+    var sel='.sec-head,.stat,.logo-tile,.path,.svc,.prog,.tcard,.ev-card,.founder-vis,.about-grid>div,.hris,.value,.aw-card,.story-grid>*,.bio-grid>*,.svc-row>*';
+    var els=[].slice.call(document.querySelectorAll(sel));
+    els.forEach(function(el){ el.classList.add('reveal'); });
+    els.forEach(function(el){
+      var sibs=[].slice.call(el.parentNode.children).filter(function(c){return c.classList.contains('reveal');});
+      var i=sibs.indexOf(el);
+      if(i>0) el.style.animationDelay=Math.min(i*0.06,0.3)+'s';
+    });
+    if(!('IntersectionObserver' in window)){ els.forEach(function(el){el.classList.remove('reveal');}); return; }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var t=e.target; t.classList.add('in'); io.unobserve(t);
+          t.addEventListener('animationend',function(){ t.classList.remove('reveal','in'); t.style.animationDelay=''; },{once:true});
+        }
+      });
+    },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  }catch(e){try{document.body.classList.remove('reveal-on');}catch(_){}}
+})();
 </script>
 </body></html>
